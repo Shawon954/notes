@@ -45,6 +45,15 @@ dependencies:
   #Spinkit
   flutter_spinkit: ^5.2.1
 
+  #Firebase Auth
+  firebase_auth: ^5.2.1
+
+  #Firebase Core
+  firebase_core: ^3.4.1
+
+  #cloud_firestore
+  cloud_firestore: ^5.4.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

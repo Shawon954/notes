@@ -27,7 +27,7 @@ class AddnotePageView extends StatelessWidget {
                     onTap: (){
                       GoRouter.of(context).go('/home_page');
                     },
-                    child: Icon(Icons.arrow_back_outlined,color: AppColors.textDark70,size: 20,),
+                    child: Icon(Icons.arrow_back_outlined,color: AppColors.textDark70,size: 25,),
                   ),
                   Center(
                       child: Padding(
