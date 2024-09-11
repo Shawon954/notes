@@ -56,12 +56,14 @@ class LoginPageView extends StatelessWidget {
                             controller: controller.passwordController,
                             validator: (password)=>ErrorMessage().validatePassword(password!),
                             obscure: controller.isObscured.value,
+                            maxLine: 1,
                             suffixIcon: IconButton(
                               icon: Icon(
                                 controller.isObscured.value
                                     ? Icons.visibility_off
                                     : Icons.visibility,
                               ),
+
                               onPressed: () {
                                 controller.togglePasswordVisibility();
                               },

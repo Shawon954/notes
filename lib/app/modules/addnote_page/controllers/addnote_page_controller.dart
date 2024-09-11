@@ -1,23 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class AddnotePageController extends GetxController {
-  //TODO: Implement AddnotePageController
+  final note_key = GlobalKey<FormState>();
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
+  final titleController = TextEditingController();
+  final detailsController = TextEditingController();
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
+  RxInt maxLines = 1.obs;
 }
