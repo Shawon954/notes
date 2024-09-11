@@ -1,23 +1,19 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SignupPageController extends GetxController {
-  //TODO: Implement SignupPageController
+  final signup_key = GlobalKey<FormState>();
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  // controller
+
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  // password show
+  var isObscured = true.obs;
+
+  void togglePasswordVisibility() {
+    isObscured.value = !isObscured.value;
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

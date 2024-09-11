@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:go_router/src/router.dart';
+import 'package:notes/app/routes/go_routes.dart';
 import 'package:notes/app/utils/app_string.dart';
 import 'package:notes/app/utils/validator.dart';
 
@@ -79,15 +81,36 @@ class LoginPageView extends StatelessWidget {
                   title: 'Log In',
                   fontSize: 20,
                   onPressed: () {
-                    if (controller.form_key.currentState!.validate()) {
-                     print('ok');
-                    }
+
+                    GoRouter.of(context).go('/home_page');
+                    // if (controller.form_key.currentState!.validate()) {
+                    //
+                    // }
                   },
                   height: 55,
                   width: 180,
 
                   color: AppColors.primaryLight,
-                )
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Don't have an account? ",style: TextStyle(color: AppColors.textDark90,fontSize: 15),),
+                    InkWell(
+                      onTap: (){
+                        GoRouter.of(context).go('/registration_page');
+                      },
+                      child: Text(
+                        'Sign up',
+                        style: TextStyle(color: Colors.blue,fontSize: 15),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),

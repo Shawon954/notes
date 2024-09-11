@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../../../utils/app_color.dart';
 import '../controllers/addnote_page_controller.dart';
 
 class AddnotePageView extends GetView<AddnotePageController> {
@@ -9,10 +10,7 @@ class AddnotePageView extends GetView<AddnotePageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('AddnotePageView'),
-        centerTitle: true,
-      ),
+     backgroundColor: AppColors.pageBackground,
       body: const Center(
         child: Text(
           'AddnotePageView is working',

@@ -13,10 +13,7 @@ final goRouter = GoRouter(
       GoRoute(path: '/', builder: (context, state) => SplashScreenView()),
       GoRoute(path: '/home_page', builder: (context, state) => HomePageView()),
       GoRoute(path: '/login_page', builder: (context, state) => LoginPageView()),
-      GoRoute(path: '/registration_page ', builder: (context, state) => SignupPageView()),
+      GoRoute(path: '/registration_page', builder: (context, state) => SignupPageView()),
       GoRoute(path: '/addnote_page', builder: (context, state) => AddnotePageView()),
-
-
-
 
 ]);
