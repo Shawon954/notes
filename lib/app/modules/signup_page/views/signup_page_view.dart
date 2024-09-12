@@ -79,6 +79,7 @@ class SignupPageView extends StatelessWidget {
                               },
                             ),
                             labelText: 'Password',
+                            maxLine: 1,
                           ),
                         ],
                       ));
@@ -94,7 +95,7 @@ class SignupPageView extends StatelessWidget {
                   fontSize: 20,
                   onPressed: () {
                     if (controller.signup_key.currentState!.validate()) {
-                      print('ok');
+                     controller.singup;
                     }
                   },
                   height: 55,
