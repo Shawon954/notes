@@ -11,6 +11,7 @@ class AuthService {
 
   final signupController = Get.put(SignupPageController());
   final signinController = Get.put(LoginPageController());
+
   final auth = FirebaseAuth.instance;
   final firestore = FirebaseFirestore.instance;
 

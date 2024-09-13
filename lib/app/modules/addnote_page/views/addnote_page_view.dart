@@ -17,79 +17,86 @@ class AddnotePageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: AppColors.pageBackground,
-        body: Padding(
-          padding: const EdgeInsets.only(top: 50, left: 12, right: 12),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      GoRouter.of(context).go('/home_page');
-                    },
-                    child: Icon(
-                      Icons.arrow_back_outlined,
-                      color: AppColors.textDark70,
-                      size: 25,
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 50, left: 12, right: 12),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        GoRouter.of(context).go('/home_page');
+                      },
+                      child: Icon(
+                        Icons.arrow_back_outlined,
+                        color: AppColors.textDark70,
+                        size: 25,
+                      ),
                     ),
-                  ),
-                  Center(
-                      child: Padding(
-                    padding: const EdgeInsets.only(left: 90),
-                    child: Text(
-                      'Write Note',
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: AppColors.textDark90,
-                          fontWeight: FontWeight.w400),
+                    Center(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 90),
+                          child: Text(
+                            'Write Note',
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: AppColors.textDark90,
+                                fontWeight: FontWeight.w400),
+                          ),
+                        )),
+                    CustomMaterialButton(
+                      title: 'Save',
+                      width: 100,
+                      onPressed:(){
+                        if(controller.note_key.currentState!.validate()){
+                          controller.saveNote(context);
+                        }
+                      },
+                      color: AppColors.primary,
                     ),
-                  )),
-                  CustomMaterialButton(
-                    title: 'Save',
-                    width: 100,
-                    onPressed: () {
-                     if(controller.note_key.currentState!.validate()){
-                       controller.saveNote();
-                     }
-                    },
-                    color: AppColors.primary,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              Form(
-                  key: controller.note_key,
-                  child: Column(
-                    children: [
-                      SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        child: CustomTextFormField(
-                          controller: controller.titleController,
-                          textInputType: TextInputType.text,
-                          labelText: 'Title',
-                          maxLine: 2,
-                          validator: (title)=>ErrorMessage().titleError(title!),
-                        ),
+                  ],
+                ),
+                SizedBox(
+                  height: 40,
+                ),
+                Form(
+                    key: controller.note_key,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Column(
+                        children: [
+                          CustomTextFormField(
+                            controller: controller.titleController,
+                            textInputType: TextInputType.text,
+                            labelText: 'Title',
+                            maxLine: 2,
+                            validator: (title) =>
+                                ErrorMessage().titleError(title!),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          CustomTextFormField(
+                            controller: controller.detailsController,
+                            textInputType: TextInputType.text,
+                            labelText: 'Details',
+                            maxLine: 8,
+                            validator: (details) =>
+                                ErrorMessage().detailsError(details!),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                        ],
                       ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      CustomTextFormField(
-                        controller: controller.detailsController,
-                        textInputType: TextInputType.text,
-                        labelText: 'Details',
-                        maxLine: 12,
-                        validator: (details)=>ErrorMessage().detailsError(details!),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                    ],
-                  ))
-            ],
+                    ))
+
+
+              ],
+            ),
           ),
         ));
   }
