@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'app/routes/go_routes.dart';
 
 Future<void> main() async {
-  await WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+   WidgetsFlutterBinding.ensureInitialized();
+   await Firebase.initializeApp();
 
   runApp( MyApp());
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
+import 'package:notes/app/core/auth.dart';
 
 import '../../../utils/app_color.dart';
 import '../../../utils/app_string.dart';
@@ -95,7 +96,8 @@ class SignupPageView extends StatelessWidget {
                   fontSize: 20,
                   onPressed: () {
                     if (controller.signup_key.currentState!.validate()) {
-                     controller.singup;
+                      var obj = AuthService();
+                      obj.UserRegister(context);
                     }
                   },
                   height: 55,

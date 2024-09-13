@@ -24,6 +24,6 @@ class SignupPageController extends GetxController {
 
   // SingUp Auth
 
-    var singup = AuthService().signup();
+   // var singup = AuthService().signup();
 
 }

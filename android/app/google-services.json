@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "998643876219",
+    "project_id": "notepad-ca031",
+    "storage_bucket": "notepad-ca031.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998643876219:android:6b523d1eecde057c057dde",
+        "android_client_info": {
+          "package_name": "com.example.notes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBahp6ZOB8HJVkUD0WNRkULuhmZ8xME7dA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

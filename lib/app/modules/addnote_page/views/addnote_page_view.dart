@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/src/router.dart';
 import 'package:notes/app/routes/go_routes.dart';
+import 'package:notes/app/utils/validator.dart';
 import 'package:notes/app/widget/custom_material_button.dart';
 import 'package:notes/app/widget/custom_textformfiled.dart';
 
@@ -24,10 +25,14 @@ class AddnotePageView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       GoRouter.of(context).go('/home_page');
                     },
-                    child: Icon(Icons.arrow_back_outlined,color: AppColors.textDark70,size: 25,),
+                    child: Icon(
+                      Icons.arrow_back_outlined,
+                      color: AppColors.textDark70,
+                      size: 25,
+                    ),
                   ),
                   Center(
                       child: Padding(
@@ -43,7 +48,11 @@ class AddnotePageView extends StatelessWidget {
                   CustomMaterialButton(
                     title: 'Save',
                     width: 100,
-                    onPressed: () {},
+                    onPressed: () {
+                     if(controller.note_key.currentState!.validate()){
+                       controller.saveNote();
+                     }
+                    },
                     color: AppColors.primary,
                   ),
                 ],
@@ -62,6 +71,7 @@ class AddnotePageView extends StatelessWidget {
                           textInputType: TextInputType.text,
                           labelText: 'Title',
                           maxLine: 2,
+                          validator: (title)=>ErrorMessage().titleError(title!),
                         ),
                       ),
                       SizedBox(
@@ -72,8 +82,8 @@ class AddnotePageView extends StatelessWidget {
                         textInputType: TextInputType.text,
                         labelText: 'Details',
                         maxLine: 12,
+                        validator: (details)=>ErrorMessage().detailsError(details!),
                       ),
-
                       SizedBox(
                         height: 20,
                       ),

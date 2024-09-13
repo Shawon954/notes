@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:go_router/src/router.dart';
+import 'package:notes/app/core/auth.dart';
 import 'package:notes/app/routes/go_routes.dart';
 import 'package:notes/app/utils/app_string.dart';
 import 'package:notes/app/utils/validator.dart';
@@ -23,27 +24,31 @@ class LoginPageView extends StatelessWidget {
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-
               children: [
+                Text(
+                  AppString.login,
+                  style: TextStyle(
+                      fontSize: 25,
+                      color: AppColors.textDark90,
+                      fontWeight: FontWeight.bold),
+                ),
 
-                Text(AppString.login, style: TextStyle(fontSize: 25,
-                    color: AppColors.textDark90,
-                    fontWeight: FontWeight.bold),),
-
-                SizedBox(height: 100,),
+                SizedBox(
+                  height: 100,
+                ),
                 Obx(() {
                   return Form(
                       key: controller.form_key,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-
                           // Email
                           CustomTextFormField(
                             textInputType: TextInputType.emailAddress,
                             controller: controller.emailController,
                             labelText: 'Email',
-                            validator: (email)=>ErrorMessage().validateEmail(email!),
+                            validator: (email) =>
+                                ErrorMessage().validateEmail(email!),
                           ),
 
                           SizedBox(
@@ -54,7 +59,8 @@ class LoginPageView extends StatelessWidget {
                           CustomTextFormField(
                             textInputType: TextInputType.text,
                             controller: controller.passwordController,
-                            validator: (password)=>ErrorMessage().validatePassword(password!),
+                            validator: (password) =>
+                                ErrorMessage().validatePassword(password!),
                             obscure: controller.isObscured.value,
                             maxLine: 1,
                             suffixIcon: IconButton(
@@ -63,7 +69,6 @@ class LoginPageView extends StatelessWidget {
                                     ? Icons.visibility_off
                                     : Icons.visibility,
                               ),
-
                               onPressed: () {
                                 controller.togglePasswordVisibility();
                               },
@@ -83,15 +88,15 @@ class LoginPageView extends StatelessWidget {
                   title: 'Log In',
                   fontSize: 20,
                   onPressed: () {
-
-                    GoRouter.of(context).go('/home_page');
-                    // if (controller.form_key.currentState!.validate()) {
-                    //
-                    // }
+                   GoRouter.of(context).go('/home_page');
+                 //    if (controller.form_key.currentState!.validate()) {
+                 //     var obj = AuthService();
+                 //     obj.UserLogin(context);
+                 //     print('ok');
+                 //    }
                   },
                   height: 55,
                   width: 180,
-
                   color: AppColors.primaryLight,
                 ),
                 SizedBox(
@@ -101,14 +106,18 @@ class LoginPageView extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Don't have an account? ",style: TextStyle(color: AppColors.textDark90,fontSize: 15),),
+                    Text(
+                      "Don't have an account? ",
+                      style:
+                          TextStyle(color: AppColors.textDark90, fontSize: 15),
+                    ),
                     InkWell(
-                      onTap: (){
+                      onTap: () {
                         GoRouter.of(context).go('/registration_page');
                       },
                       child: Text(
                         'Sign up',
-                        style: TextStyle(color: Colors.blue,fontSize: 15),
+                        style: TextStyle(color: Colors.blue, fontSize: 15),
                       ),
                     ),
                   ],

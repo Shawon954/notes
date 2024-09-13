@@ -46,10 +46,10 @@ dependencies:
   flutter_spinkit: ^5.2.1
 
   #Firebase Auth
-  firebase_auth: ^5.2.1
+  firebase_auth: any
 
   #Firebase Core
-  firebase_core: ^3.4.1
+  firebase_core: any
 
   #cloud_firestore
   cloud_firestore: ^5.4.1

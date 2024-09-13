@@ -6,6 +6,20 @@ class ErrorMessage{
     return null;
   }
 
+ String? titleError(String value) {
+    if (value.isEmpty) {
+      return 'Please write title';
+    }
+    return null;
+  }
+
+ String? detailsError(String value) {
+    if (value.isEmpty) {
+      return 'Please write details';
+    }
+    return null;
+  }
+
 
   String? validateEmail(String? value) {
 
