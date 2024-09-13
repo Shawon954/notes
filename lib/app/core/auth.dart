@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,7 @@ class AuthService {
   final signupController = Get.put(SignupPageController());
   final signinController = Get.put(LoginPageController());
   final auth = FirebaseAuth.instance;
+  final firestore = FirebaseFirestore.instance;
 
   Future<void>UserRegister(context)async{
     try {
@@ -18,8 +20,12 @@ class AuthService {
         email: signupController.emailController.text.trim(),
         password: signupController.passwordController.text.trim(),
       );
-      var authUserCrd = userCradintial.user;
 
+      var authUserCrd = userCradintial.user;
+      await firestore.collection('NoteUser').doc(authUserCrd!.email).set({
+        "name":signupController.nameController.text.trim(),
+        "UserID":authUserCrd.uid,
+      });
       if(authUserCrd!.uid.isNotEmpty){
         GoRouter.of(context).go('/home_page');
         Get.snackbar('Registration', "Your account create successful");
