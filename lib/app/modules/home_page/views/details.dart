@@ -21,7 +21,7 @@ class DetailsScreen extends StatelessWidget {
           Container(
             height: MediaQuery.sizeOf(context).height*0.1,
             width: double.infinity,
-            color: Colors.amber,
+
             child: Padding(
               padding: const EdgeInsets.only(top: 25,left: 20),
               child: Align(
@@ -38,6 +38,7 @@ class DetailsScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 20,right: 20,top: 30),
             child:  Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title,

@@ -17,7 +17,10 @@ final goRouter = GoRouter(navigatorKey: Get.key, initialLocation: '/', routes: [
   GoRoute(path: '/registration_page', builder: (context, state) => SignupPageView()),
   GoRoute(path: '/addnote_page', builder: (context, state) => AddnotePageView()),
   GoRoute(path: '/details_page', builder: (context, state) {
+    final extraData = state.extra as Map<String, dynamic>?;
+    final title = extraData?['title'] ?? 'Default Title';
+    final details = extraData?['details'] ?? 'Default Description';
 
-  return DetailsScreen(title: '', details: '',);
+    return DetailsScreen(title: title, details: details,);
   }),
 ]);

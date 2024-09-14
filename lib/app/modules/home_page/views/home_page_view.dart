@@ -77,7 +77,10 @@ class HomePageView extends StatelessWidget {
                          final item = controller.dataList[index];
                         return GestureDetector(
                           onTap: () {
-                            GoRouter.of(context).go('/details_page',extra: item.title,);
+                            GoRouter.of(context).go('/details_page',extra: {
+                              'title':item.title,
+                              'details':item.details
+                            },);
                           },
                           child: Container(
                             decoration: BoxDecoration(
