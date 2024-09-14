@@ -19,12 +19,16 @@ class LoginPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: AppColors.pageBackground,
+        extendBody: true,
         body: Padding(
           padding: const EdgeInsets.only(left: 12, right: 12),
-          child: Center(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+
+             mainAxisAlignment: MainAxisAlignment.center,
               children: [
+            SizedBox(height: 150,),
                 Text(
                   AppString.login,
                   style: TextStyle(
@@ -34,7 +38,7 @@ class LoginPageView extends StatelessWidget {
                 ),
 
                 SizedBox(
-                  height: 100,
+                  height: 80,
                 ),
                 Obx(() {
                   return Form(
@@ -122,6 +126,7 @@ class LoginPageView extends StatelessWidget {
                     ),
                   ],
                 ),
+                SizedBox(height: 30,),
               ],
             ),
           ),

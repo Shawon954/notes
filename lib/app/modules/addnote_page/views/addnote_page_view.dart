@@ -7,6 +7,7 @@ import 'package:notes/app/utils/validator.dart';
 import 'package:notes/app/widget/custom_material_button.dart';
 import 'package:notes/app/widget/custom_textformfiled.dart';
 
+import '../../../core/model.dart';
 import '../../../utils/app_color.dart';
 import '../controllers/addnote_page_controller.dart';
 
@@ -38,21 +39,22 @@ class AddnotePageView extends StatelessWidget {
                     ),
                     Center(
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 90),
-                          child: Text(
-                            'Write Note',
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: AppColors.textDark90,
-                                fontWeight: FontWeight.w400),
-                          ),
-                        )),
+                      padding: const EdgeInsets.only(left: 90),
+                      child: Text(
+                        'Write Note',
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: AppColors.textDark90,
+                            fontWeight: FontWeight.w400),
+                      ),
+                    )),
                     CustomMaterialButton(
                       title: 'Save',
                       width: 100,
-                      onPressed:(){
-                        if(controller.note_key.currentState!.validate()){
+                      onPressed: () {
+                        if (controller.note_key.currentState!.validate()) {
                           controller.saveNote(context);
+                         // controller.addData(context);
                         }
                       },
                       color: AppColors.primary,
@@ -93,8 +95,6 @@ class AddnotePageView extends StatelessWidget {
                         ],
                       ),
                     ))
-
-
               ],
             ),
           ),

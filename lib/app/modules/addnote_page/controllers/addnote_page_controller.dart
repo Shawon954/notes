@@ -7,6 +7,8 @@ import 'package:get/get.dart';
 import 'package:go_router/src/router.dart';
 import 'package:notes/app/routes/go_routes.dart';
 
+import '../../../core/model.dart';
+
 class AddnotePageController extends GetxController {
   final note_key = GlobalKey<FormState>();
 
@@ -15,40 +17,40 @@ class AddnotePageController extends GetxController {
 
   RxInt maxLines = 1.obs;
 
-  final auth = FirebaseAuth.instance;
+
   final firestore = FirebaseFirestore.instance;
+  final auth = FirebaseAuth.instance.currentUser;
 
-  var isnoteadd = false.obs;
 
-  Future<dynamic> saveNote(con) async {
+  var dataList = <DataModel>[].obs;
+
+  Future<void> saveNote(con,) async {
     try {
-      isnoteadd.value = true;
-      User? user = auth.currentUser;
-      if (user != null) {
-        String? userId = user.email;
-        print(userId);
-        await firestore
+
+
+      final docRef =  await firestore
             .collection('NoteUser')
-            .doc(userId)
+            .doc(auth!.email)
             .collection('notes')
-            .add({
-          'title': titleController.text,
-          'details': detailsController.text,
-          'createdAt': Timestamp.now(),
-        });
+            .add(
+            DataModel(title: titleController.text, details: detailsController.text).toMap());
 
         GoRouter.of(con).go('/home_page');
         Get.snackbar('Success', 'Note saved successfully!',
             snackPosition: SnackPosition.TOP);
-      } else {
-        Get.snackbar('Error', 'No user logged in',
-            snackPosition: SnackPosition.TOP);
-      }
+        titleController.clear();
+        detailsController.clear();
+
+      dataList.add(docRef as DataModel);
+
     } catch (e) {
       Get.snackbar('Error', 'Failed to save note',
           snackPosition: SnackPosition.TOP);
     }
   }
+
+
+
 
   @override
   void dispose() {
